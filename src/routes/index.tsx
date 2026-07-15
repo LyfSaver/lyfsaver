@@ -11,7 +11,11 @@ import {
   Rocket,
   ShieldCheck,
   Users,
+  Share2,
+  CalendarCheck,
+  PercentCircle,
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -75,18 +79,18 @@ function Home() {
             <Mascot size={320} eager animate="float" className="relative" />
           </div>
         </div>
+      </section>
 
-        {/* Beat My Quote — overlaps into next section */}
-        <div className="relative mx-auto -mb-24 max-w-3xl px-4 pb-16">
+      {/* BEAT MY QUOTE — its own section for consistent layout */}
+      <section className="bg-background py-16">
+        <div className="mx-auto max-w-3xl px-4">
           <BeatMyQuote />
         </div>
       </section>
 
-      {/* Spacer for overlap */}
-      <div className="h-24" />
-
       {/* CATEGORIES */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="bg-muted/50 py-16">
+        <div className="mx-auto max-w-6xl px-4">
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-gold">Explore</p>
@@ -124,10 +128,11 @@ function Home() {
             </Link>
           ))}
         </div>
+        </div>
       </section>
 
       {/* WHAT'S INCLUDED */}
-      <section className="bg-muted/50 py-16">
+      <section className="bg-background py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid gap-10 md:grid-cols-2 md:items-center">
             <div>
@@ -173,41 +178,126 @@ function Home() {
       </section>
 
       {/* REFERRAL */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="relative overflow-hidden rounded-3xl bg-navy p-8 text-primary-foreground md:p-12">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
-          <div className="grid gap-8 md:grid-cols-2 md:items-center">
-            <div>
-              <span className="rounded-full bg-gold/20 px-3 py-1 text-xs font-semibold text-gold">
-                Refer & save
-              </span>
-              <h2 className="mt-3 text-3xl font-black md:text-4xl">
-                Bring a friend — <span className="text-gold">both get 8% off.</span>
-              </h2>
-              <p className="mt-3 text-primary-foreground/75">
-                Share your referral link. When they book their project, we discount both of your quotes by 8%.
-              </p>
-            </div>
-            <ol className="grid gap-4 sm:grid-cols-3">
-              {["Refer", "Friend books", "Both save 8%"].map((s, i) => (
-                <li
-                  key={s}
-                  className="rounded-2xl border border-primary-foreground/10 bg-primary-foreground/5 p-4 text-center"
-                >
-                  <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gold text-sm font-black text-navy">
-                    {i + 1}
-                  </div>
-                  <div className="mt-2 text-sm font-semibold">{s}</div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
+      <ReferralSection />
 
       {/* FAQ */}
       <FAQ />
     </div>
+  );
+}
+
+const referralSteps = [
+  {
+    icon: Share2,
+    title: "Refer",
+    desc: "Share your unique referral link with a classmate or friend.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Friend books",
+    desc: "They book their final year project with LYF SAVER.",
+  },
+  {
+    icon: PercentCircle,
+    title: "Both save 8%",
+    desc: "We instantly apply 8% off both of your quotes.",
+  },
+];
+
+function ReferralSection() {
+  const ref = useRef<HTMLOListElement | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (!ref.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <section className="bg-background py-16">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="relative overflow-hidden rounded-3xl bg-navy p-8 text-primary-foreground md:p-12">
+          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
+          <div className="pointer-events-none absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
+          <div className="relative text-center">
+            <span className="inline-block rounded-full bg-gold/20 px-3 py-1 text-xs font-semibold text-gold">
+              Refer & save
+            </span>
+            <h2 className="mt-3 text-3xl font-black md:text-4xl">
+              Bring a friend — <span className="text-gold">both get 8% off.</span>
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-primary-foreground/75">
+              Share your referral link. When they book their project, we discount both of your quotes by 8%.
+            </p>
+          </div>
+
+          <ol
+            ref={ref}
+            className="relative mt-12 grid gap-8 md:grid-cols-3"
+          >
+            {/* Connector line — desktop horizontal */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-[16%] right-[16%] top-8 hidden h-0.5 md:block"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(to right, var(--gold) 0 8px, transparent 8px 16px)",
+                opacity: visible ? 0.6 : 0,
+                transition: "opacity 900ms ease 200ms",
+              }}
+            />
+            {/* Connector line — mobile vertical */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-8 bottom-8 w-0.5 -translate-x-1/2 md:hidden"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(to bottom, var(--gold) 0 8px, transparent 8px 16px)",
+                opacity: visible ? 0.6 : 0,
+                transition: "opacity 900ms ease 200ms",
+              }}
+            />
+
+            {referralSteps.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <li
+                  key={s.title}
+                  className="relative flex flex-col items-center text-center"
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? "translateY(0)" : "translateY(16px)",
+                    transition: `opacity 600ms ease ${i * 220}ms, transform 600ms ease ${i * 220}ms`,
+                  }}
+                >
+                  <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-gold text-navy shadow-glow ring-4 ring-navy">
+                    <Icon size={26} strokeWidth={2.5} />
+                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-navy text-[11px] font-black text-gold ring-2 ring-gold">
+                      {i + 1}
+                    </span>
+                  </div>
+                  <div className="mt-4 text-base font-bold">{s.title}</div>
+                  <p className="mt-1 max-w-[220px] text-sm text-primary-foreground/70">
+                    {s.desc}
+                  </p>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </div>
+    </section>
   );
 }
 
