@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as CustomProjectRouteImport } from './routes/custom-project'
@@ -20,6 +21,11 @@ import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsCategoryIndexRouteImport } from './routes/projects.$category.index'
 import { Route as ProjectsCategorySlugRouteImport } from './routes/projects.$category.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/custom-project': typeof CustomProjectRoute
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
   '/projects/$category/': typeof ProjectsCategoryIndexRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/custom-project': typeof CustomProjectRoute
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
   '/projects/$category': typeof ProjectsCategoryIndexRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/custom-project': typeof CustomProjectRoute
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
   '/projects/$category/': typeof ProjectsCategoryIndexRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/custom-project'
     | '/how-it-works'
     | '/pricing'
+    | '/sitemap.xml'
     | '/projects/'
     | '/projects/$category/$slug'
     | '/projects/$category/'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/custom-project'
     | '/how-it-works'
     | '/pricing'
+    | '/sitemap.xml'
     | '/projects'
     | '/projects/$category/$slug'
     | '/projects/$category'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/custom-project'
     | '/how-it-works'
     | '/pricing'
+    | '/sitemap.xml'
     | '/projects/'
     | '/projects/$category/$slug'
     | '/projects/$category/'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   CustomProjectRoute: typeof CustomProjectRoute
   HowItWorksRoute: typeof HowItWorksRoute
   PricingRoute: typeof PricingRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
   ProjectsCategorySlugRoute: typeof ProjectsCategorySlugRoute
   ProjectsCategoryIndexRoute: typeof ProjectsCategoryIndexRoute
@@ -162,6 +175,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   CustomProjectRoute: CustomProjectRoute,
   HowItWorksRoute: HowItWorksRoute,
   PricingRoute: PricingRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
   ProjectsCategorySlugRoute: ProjectsCategorySlugRoute,
   ProjectsCategoryIndexRoute: ProjectsCategoryIndexRoute,
