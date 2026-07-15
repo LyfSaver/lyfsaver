@@ -62,39 +62,54 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.75rem;
+  /* LYF SAVER — navy + gold + white */
+  --background: oklch(0.995 0.003 90);
+  --foreground: oklch(0.19 0.05 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.19 0.05 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.19 0.05 260);
+  /* Navy primary (~#0B1F3A) */
+  --primary: oklch(0.24 0.06 258);
+  --primary-foreground: oklch(0.99 0.005 90);
+  /* Gold secondary (~#F5A623) */
+  --secondary: oklch(0.8 0.16 78);
+  --secondary-foreground: oklch(0.2 0.05 260);
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.45 0.03 258);
+  --accent: oklch(0.8 0.16 78);
+  --accent-foreground: oklch(0.2 0.05 260);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.02 250);
+  --input: oklch(0.9 0.02 250);
+  --ring: oklch(0.8 0.16 78);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: oklch(0.24 0.06 258);
+  --sidebar-foreground: oklch(0.99 0.005 90);
+  --sidebar-primary: oklch(0.8 0.16 78);
+  --sidebar-primary-foreground: oklch(0.2 0.05 260);
+  --sidebar-accent: oklch(0.3 0.06 258);
+  --sidebar-accent-foreground: oklch(0.99 0.005 90);
+  --sidebar-border: oklch(0.3 0.06 258);
+  --sidebar-ring: oklch(0.8 0.16 78);
+
+  --navy: oklch(0.24 0.06 258);
+  --navy-deep: oklch(0.17 0.05 258);
+  --gold: oklch(0.8 0.16 78);
+  --gold-soft: oklch(0.9 0.11 85);
+
+  --gradient-hero: radial-gradient(1200px 600px at 10% -10%, oklch(0.3 0.08 258) 0%, transparent 60%),
+    radial-gradient(900px 500px at 100% 10%, oklch(0.35 0.1 78 / 0.35) 0%, transparent 60%),
+    linear-gradient(180deg, oklch(0.17 0.05 258) 0%, oklch(0.24 0.06 258) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.85 0.16 82), oklch(0.75 0.17 65));
+  --shadow-glow: 0 20px 60px -20px oklch(0.8 0.16 78 / 0.45);
+  --shadow-card: 0 10px 30px -12px oklch(0.19 0.05 260 / 0.15);
 }
 
 .dark {
@@ -140,5 +155,60 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility bg-hero {
+  background: var(--gradient-hero);
+}
+@utility bg-gold-gradient {
+  background: var(--gradient-gold);
+}
+@utility text-gold {
+  color: var(--gold);
+}
+@utility bg-navy {
+  background-color: var(--navy);
+}
+@utility text-navy {
+  color: var(--navy);
+}
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-10deg); }
+  40% { transform: rotate(12deg); }
+  60% { transform: rotate(-6deg); }
+  80% { transform: rotate(4deg); }
+}
+@keyframes pop {
+  0% { transform: scale(0.9); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@utility animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+@utility animate-wave {
+  animation: wave 1.6s ease-in-out;
+  transform-origin: 70% 70%;
+}
+@utility animate-pop {
+  animation: pop 0.4s ease-out;
   }
 }
