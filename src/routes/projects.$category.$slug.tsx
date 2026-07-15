@@ -64,7 +64,7 @@ function ProjectDetail() {
       <h1 className="mt-1 text-3xl font-black text-navy md:text-4xl">{project.title}</h1>
 
       <div className="mt-4 flex flex-wrap gap-1.5">
-        {project.stack.map((s) => (
+        {project.stack.map((s: string) => (
           <span key={s} className="rounded-full bg-navy/5 px-2.5 py-1 text-xs font-semibold text-navy">
             {s}
           </span>
