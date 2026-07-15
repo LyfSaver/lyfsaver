@@ -9,11 +9,47 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as CustomProjectRouteImport } from './routes/custom-project'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsCategoryIndexRouteImport } from './routes/projects.$category.index'
 import { Route as ProjectsCategorySlugRouteImport } from './routes/projects.$category.$slug'
 
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomProjectRoute = CustomProjectRouteImport.update({
+  id: '/custom-project',
+  path: '/custom-project',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +73,24 @@ const ProjectsCategorySlugRoute = ProjectsCategorySlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/custom-project': typeof CustomProjectRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/pricing': typeof PricingRoute
   '/projects/': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
   '/projects/$category/': typeof ProjectsCategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/custom-project': typeof CustomProjectRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
   '/projects/$category': typeof ProjectsCategoryIndexRoute
@@ -50,6 +98,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/custom-project': typeof CustomProjectRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/pricing': typeof PricingRoute
   '/projects/': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
   '/projects/$category/': typeof ProjectsCategoryIndexRoute
@@ -58,14 +112,36 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/blog'
+    | '/contact'
+    | '/custom-project'
+    | '/how-it-works'
+    | '/pricing'
     | '/projects/'
     | '/projects/$category/$slug'
     | '/projects/$category/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects' | '/projects/$category/$slug' | '/projects/$category'
+  to:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/contact'
+    | '/custom-project'
+    | '/how-it-works'
+    | '/pricing'
+    | '/projects'
+    | '/projects/$category/$slug'
+    | '/projects/$category'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/blog'
+    | '/contact'
+    | '/custom-project'
+    | '/how-it-works'
+    | '/pricing'
     | '/projects/'
     | '/projects/$category/$slug'
     | '/projects/$category/'
@@ -73,6 +149,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRoute
+  ContactRoute: typeof ContactRoute
+  CustomProjectRoute: typeof CustomProjectRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  PricingRoute: typeof PricingRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
   ProjectsCategorySlugRoute: typeof ProjectsCategorySlugRoute
   ProjectsCategoryIndexRoute: typeof ProjectsCategoryIndexRoute
@@ -80,6 +162,48 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/custom-project': {
+      id: '/custom-project'
+      path: '/custom-project'
+      fullPath: '/custom-project'
+      preLoaderRoute: typeof CustomProjectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -113,6 +237,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BlogRoute: BlogRoute,
+  ContactRoute: ContactRoute,
+  CustomProjectRoute: CustomProjectRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  PricingRoute: PricingRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
   ProjectsCategorySlugRoute: ProjectsCategorySlugRoute,
   ProjectsCategoryIndexRoute: ProjectsCategoryIndexRoute,
