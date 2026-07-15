@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "../components/site/Header";
+import { Footer } from "../components/site/Footer";
+import { FloatingChat } from "../components/site/FloatingChat";
 
 function NotFoundComponent() {
   return (
@@ -77,14 +80,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
+      {
+        name: "description",
+        content:
+          "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
+      },
+      { name: "author", content: "LYF SAVER" },
+      { property: "og:site_name", content: "LYF SAVER" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@lyfsaver" },
     ],
     links: [
       {
@@ -92,6 +98,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "LYF SAVER",
+          slogan: "Your Project. Our Promise.",
+          url: "/",
+          sameAs: ["https://instagram.com/lyfsaver"],
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: "hello@lyfsaver.in",
+            contactType: "customer support",
+          },
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -119,8 +143,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="flex-1">
+          {/* Required: nested routes render here. */}
+          <Outlet />
+        </main>
+        <Footer />
+        <FloatingChat />
+      </div>
     </QueryClientProvider>
   );
 }
