@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Mail } from "lucide-react";
+import { Instagram, Mail, Phone, MessageCircle } from "lucide-react";
 import mascotImg from "@/assets/mascot.png";
 
 export function Footer() {
@@ -37,11 +37,25 @@ export function Footer() {
         <div>
           <h3 className="text-sm font-semibold text-gold">Get in touch</h3>
           <ul className="mt-3 space-y-2 text-sm text-primary-foreground/80">
-            <li className="flex items-center gap-2">
-              <Mail size={16} /> hello@lyfsaver.in
+            <li>
+              <a href="mailto:query.lyfsaver@gmail.com" className="flex items-center gap-2 hover:text-gold">
+                <Mail size={16} /> query.lyfsaver@gmail.com
+              </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Instagram size={16} /> @lyfsaver
+            <li>
+              <a href="tel:+919535419091" className="flex items-center gap-2 hover:text-gold">
+                <Phone size={16} /> +91 95354 19091
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/919535419091" className="flex items-center gap-2 hover:text-gold">
+                <MessageCircle size={16} /> WhatsApp 95354 19091
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/lyf.saver" className="flex items-center gap-2 hover:text-gold">
+                <Instagram size={16} /> @lyf.saver
+              </a>
             </li>
           </ul>
         </div>
