@@ -17,20 +17,20 @@ export function FloatingChat() {
           </button>
           <p className="text-sm font-semibold text-navy">Need help picking a project? 👋</p>
           <p className="mt-1 text-xs text-muted-foreground">
-            DM us on Instagram or WhatsApp — we usually reply in minutes.
+            DM us on Instagram or drop us an email — we usually reply in minutes.
           </p>
           <div className="mt-3 flex gap-2">
             <a
-              href="https://instagram.com/lyfsaver"
+              href="https://instagram.com/lyf.saver"
               className="flex-1 rounded-full bg-gold-gradient px-3 py-2 text-center text-xs font-semibold text-navy"
             >
               Instagram
             </a>
             <a
-              href="https://wa.me/919999999999"
+              href="mailto:query.lyfsaver@gmail.com"
               className="flex-1 rounded-full bg-navy px-3 py-2 text-center text-xs font-semibold text-primary-foreground"
             >
-              WhatsApp
+              Email
             </a>
           </div>
         </div>
