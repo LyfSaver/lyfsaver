@@ -22,7 +22,8 @@ export const Route = createFileRoute("/custom-project")({
 });
 
 function CustomProject() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
   return (
     <div className="mx-auto max-w-5xl px-4 py-14">
       <div className="grid gap-10 md:grid-cols-2 md:items-center">
@@ -37,20 +38,66 @@ function CustomProject() {
         </div>
         <form
           className="rounded-3xl border border-border bg-card p-6 shadow-glow"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            setSubmitted(true);
-            toast.success("Got it! We'll get back to you within 24 hours.");
+            if (status === "sending") return;
+            setStatus("sending");
+            setErrorMsg("");
+            const form = e.currentTarget;
+            const fd = new FormData(form);
+            const payload = {
+              name: String(fd.get("name") || ""),
+              contact: String(fd.get("contact") || ""),
+              domain: String(fd.get("domain") || ""),
+              idea: String(fd.get("idea") || ""),
+              deadline: String(fd.get("deadline") || ""),
+              budget: String(fd.get("budget") || ""),
+              _subject: "New LYF SAVER custom project request",
+              _template: "table",
+              _captcha: "false",
+            };
+            try {
+              const res = await fetch(
+                "https://formsubmit.co/ajax/query.lyfsaver@gmail.com",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                  },
+                  body: JSON.stringify(payload),
+                },
+              );
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              const data = await res
+                .json()
+                .catch(() => ({}) as { success?: string | boolean });
+              if (data && (data.success === "true" || data.success === true)) {
+                setStatus("sent");
+                toast.success("Got it! We'll get back to you within 24 hours.");
+                form.reset();
+              } else {
+                throw new Error("Send failed");
+              }
+            } catch (err) {
+              setStatus("error");
+              const msg =
+                err instanceof Error ? err.message : "Something went wrong";
+              setErrorMsg(msg);
+              toast.error(
+                "Couldn't send. Please email query.lyfsaver@gmail.com or DM @lyf.saver on Instagram.",
+              );
+            }
           }}
         >
           <Field label="Your name">
-            <input required className="input" placeholder="e.g. Aditi Sharma" />
+            <input name="name" required className="input" placeholder="e.g. Aditi Sharma" />
           </Field>
           <Field label="Email or WhatsApp">
-            <input required className="input" placeholder="you@college.edu / +91…" />
+            <input name="contact" required className="input" placeholder="you@college.edu / +91…" />
           </Field>
           <Field label="Domain">
-            <select required className="input">
+            <select name="domain" required className="input">
               <option value="">Select a domain</option>
               <option>CSE / ISE / CSBS</option>
               <option>AIML</option>
@@ -60,22 +107,36 @@ function CustomProject() {
             </select>
           </Field>
           <Field label="Your idea (2–3 lines)">
-            <textarea required rows={4} className="input" placeholder="A short summary of your project idea" />
+            <textarea name="idea" required rows={4} className="input" placeholder="A short summary of your project idea" />
           </Field>
           <div className="grid grid-cols-2 gap-3">
             <Field label="Deadline">
-              <input required type="date" className="input" />
+              <input name="deadline" required type="date" className="input" />
             </Field>
             <Field label="Budget (₹)">
-              <input type="number" className="input" placeholder="e.g. 8000" />
+              <input name="budget" type="number" className="input" placeholder="e.g. 8000" />
             </Field>
           </div>
           <button
             type="submit"
-            className="mt-5 w-full rounded-full bg-navy py-3 text-sm font-semibold text-primary-foreground shadow-card transition-transform hover:scale-[1.02]"
+            disabled={status === "sending"}
+            className="mt-5 w-full rounded-full bg-navy py-3 text-sm font-semibold text-primary-foreground shadow-card transition-transform hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
           >
-            {submitted ? "Sent — thank you!" : "Send request"}
+            {status === "sending"
+              ? "Sending…"
+              : status === "sent"
+                ? "Sent — thank you!"
+                : "Send request"}
           </button>
+          {status === "error" && (
+            <p className="mt-3 text-center text-sm font-medium text-destructive">
+              Couldn't send{errorMsg ? ` (${errorMsg})` : ""}. Email us at{" "}
+              <a href="mailto:query.lyfsaver@gmail.com" className="underline">
+                query.lyfsaver@gmail.com
+              </a>
+              .
+            </p>
+          )}
           <p className="mt-3 text-center text-xs text-muted-foreground">
             Prefer to chat? <Link to="/contact" className="font-semibold text-navy underline">Message us</Link>.
           </p>
