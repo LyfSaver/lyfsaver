@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { Mascot } from "@/components/site/Mascot";
 
@@ -38,14 +38,8 @@ function Contact() {
             <a href="mailto:query.lyfsaver@gmail.com" className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card hover:border-gold">
               <Mail className="text-gold" /> <div><div className="font-semibold text-navy">query.lyfsaver@gmail.com</div><div className="text-xs text-muted-foreground">Email</div></div>
             </a>
-            <a href="tel:+919535419091" className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card hover:border-gold">
-              <Phone className="text-gold" /> <div><div className="font-semibold text-navy">+91 95354 19091</div><div className="text-xs text-muted-foreground">Call</div></div>
-            </a>
-            <a href="https://wa.me/919535419091" className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card hover:border-gold">
-              <MessageCircle className="text-gold" /> <div><div className="font-semibold text-navy">WhatsApp — 95354 19091</div><div className="text-xs text-muted-foreground">Fastest reply</div></div>
-            </a>
             <a href="https://instagram.com/lyf.saver" className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card hover:border-gold">
-              <Instagram className="text-gold" /> <div><div className="font-semibold text-navy">@lyf.saver</div><div className="text-xs text-muted-foreground">Instagram DMs</div></div>
+              <Instagram className="text-gold" /> <div><div className="font-semibold text-navy">lyf.saver</div><div className="text-xs text-muted-foreground">Instagram DMs</div></div>
             </a>
           </div>
           <div className="mt-8 hidden md:block">
@@ -136,9 +130,9 @@ function Contact() {
               <a href="mailto:query.lyfsaver@gmail.com" className="underline">
                 query.lyfsaver@gmail.com
               </a>{" "}
-              or WhatsApp{" "}
-              <a href="https://wa.me/919535419091" className="underline">
-                95354 19091
+              or DM us on Instagram{" "}
+              <a href="https://instagram.com/lyf.saver" className="underline">
+                lyf.saver
               </a>
               .
             </p>
