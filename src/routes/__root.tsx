@@ -92,13 +92,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@lyfsaver" },
+      { property: "og:title", content: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
+      { name: "twitter:title", content: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
+      { property: "og:description", content: "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included." },
+      { name: "twitter:description", content: "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/590a49ea-520a-4ac0-87ed-5cbcdc8891ac" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/590a49ea-520a-4ac0-87ed-5cbcdc8891ac" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
     scripts: [
       {

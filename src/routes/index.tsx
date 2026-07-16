@@ -26,8 +26,8 @@ export const Route = createFileRoute("/")({
         content:
           "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
       },
-      { property: "og:title", content: "LYF SAVER — Final Year Project Maker" },
-      { property: "og:description", content: "We beat any final year project quote you've received." },
+      { property: "og:title", content: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
+      { property: "og:description", content: "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
