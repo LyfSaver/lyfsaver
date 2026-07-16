@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Mail, Phone, MessageCircle } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import mascotImg from "@/assets/mascot.png";
 
 export function Footer() {
@@ -43,18 +43,8 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="tel:+919535419091" className="flex items-center gap-2 hover:text-gold">
-                <Phone size={16} /> +91 95354 19091
-              </a>
-            </li>
-            <li>
-              <a href="https://wa.me/919535419091" className="flex items-center gap-2 hover:text-gold">
-                <MessageCircle size={16} /> WhatsApp 95354 19091
-              </a>
-            </li>
-            <li>
               <a href="https://instagram.com/lyf.saver" className="flex items-center gap-2 hover:text-gold">
-                <Instagram size={16} /> @lyf.saver
+                <Instagram size={16} /> lyf.saver
               </a>
             </li>
           </ul>
