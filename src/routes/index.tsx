@@ -244,27 +244,25 @@ function ReferralSection() {
 
           <ol
             ref={ref}
-            className="relative mt-12 grid gap-8 md:grid-cols-3"
+            className="relative mt-12 grid gap-10 md:grid-cols-3"
           >
-            {/* Connector line — desktop horizontal */}
+            {/* Connector line — desktop horizontal, positioned between icon centers (1/6 → 5/6) */}
             <div
               aria-hidden
-              className="pointer-events-none absolute left-[16%] right-[16%] top-8 hidden h-0.5 md:block"
+              className="pointer-events-none absolute top-8 hidden border-t-2 border-dashed border-gold/60 md:block"
               style={{
-                backgroundImage:
-                  "repeating-linear-gradient(to right, var(--gold) 0 8px, transparent 8px 16px)",
-                opacity: visible ? 0.6 : 0,
+                left: "16.6667%",
+                right: "16.6667%",
+                opacity: visible ? 1 : 0,
                 transition: "opacity 900ms ease 200ms",
               }}
             />
-            {/* Connector line — mobile vertical */}
+            {/* Connector line — mobile vertical, through the center of each icon */}
             <div
               aria-hidden
-              className="pointer-events-none absolute left-1/2 top-8 bottom-8 w-0.5 -translate-x-1/2 md:hidden"
+              className="pointer-events-none absolute left-1/2 top-8 bottom-8 -translate-x-1/2 border-l-2 border-dashed border-gold/60 md:hidden"
               style={{
-                backgroundImage:
-                  "repeating-linear-gradient(to bottom, var(--gold) 0 8px, transparent 8px 16px)",
-                opacity: visible ? 0.6 : 0,
+                opacity: visible ? 1 : 0,
                 transition: "opacity 900ms ease 200ms",
               }}
             />
