@@ -178,6 +178,12 @@
 @utility text-navy {
   color: var(--navy);
 }
+@utility bg-gold {
+  background-color: var(--gold);
+}
+@utility border-gold {
+  border-color: var(--gold);
+}
 @utility shadow-glow {
   box-shadow: var(--shadow-glow);
 }
