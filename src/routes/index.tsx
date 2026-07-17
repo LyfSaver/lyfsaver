@@ -188,19 +188,19 @@ function Home() {
 
 const referralSteps = [
   {
-    icon: Share2,
-    title: "Refer",
-    desc: "Share your unique referral link with a classmate or friend.",
+    eyebrow: "The referral",
+    title: "Share your unique link with a classmate or friend.",
+    tone: "muted" as const,
   },
   {
-    icon: CalendarCheck,
-    title: "Friend books",
-    desc: "They book their final year project with LYF SAVER.",
+    eyebrow: "The booking",
+    title: "They book their final year project with LYF SAVER.",
+    tone: "muted" as const,
   },
   {
-    icon: PercentCircle,
-    title: "Both save 8%",
-    desc: "We instantly apply 8% off both of your quotes.",
+    eyebrow: "The reward",
+    title: "You both save 8% instantly.",
+    tone: "reward" as const,
   },
 ];
 
@@ -218,7 +218,7 @@ function ReferralSection() {
           }
         });
       },
-      { threshold: 0.25 },
+      { threshold: 0.2 },
     );
     io.observe(ref.current);
     return () => io.disconnect();
@@ -226,73 +226,103 @@ function ReferralSection() {
 
   return (
     <section className="bg-background py-16">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="relative overflow-hidden rounded-3xl bg-navy p-8 text-primary-foreground md:p-12">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
-          <div className="pointer-events-none absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
-          <div className="relative text-center">
-            <span className="inline-block rounded-full bg-gold/20 px-3 py-1 text-xs font-semibold text-gold">
+      <div className="mx-auto max-w-3xl px-4">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-navy p-6 text-primary-foreground shadow-xl sm:p-10">
+          {/* Decorative gold glow */}
+          <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gold/20 blur-3xl" />
+
+          {/* Header */}
+          <div className="relative">
+            <span className="inline-block rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-gold">
               Refer & save
             </span>
-            <h2 className="mt-3 text-3xl font-black md:text-4xl">
-              Bring a friend — <span className="text-gold">both get 8% off.</span>
+            <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">
+              Bring a friend —{" "}
+              <span className="italic font-serif text-gold">both get 8% off.</span>
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-primary-foreground/75">
-              Share your referral link. When they book their project, we discount both of your quotes by 8%.
+            <p className="mt-3 max-w-md text-sm text-primary-foreground/70">
+              Share your referral link. When they book, we instantly discount both of your quotes.
             </p>
           </div>
 
-          <ol
-            ref={ref}
-            className="relative mt-12 grid gap-10 md:grid-cols-3"
-          >
-            {/* Connector line — desktop horizontal, positioned between icon centers (1/6 → 5/6) */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute top-8 hidden border-t-2 border-dashed border-gold/60 md:block"
-              style={{
-                left: "16.6667%",
-                right: "16.6667%",
-                opacity: visible ? 1 : 0,
-                transition: "opacity 900ms ease 200ms",
-              }}
-            />
-            {/* Connector line — mobile vertical, through the center of each icon */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-1/2 top-8 bottom-8 -translate-x-1/2 border-l-2 border-dashed border-gold/60 md:hidden"
-              style={{
-                opacity: visible ? 1 : 0,
-                transition: "opacity 900ms ease 200ms",
-              }}
-            />
-
+          {/* Building-block steps */}
+          <ol ref={ref} className="relative mt-8 flex flex-col gap-3">
             {referralSteps.map((s, i) => {
-              const Icon = s.icon;
+              const isReward = s.tone === "reward";
               return (
                 <li
-                  key={s.title}
-                  className="relative flex flex-col items-center text-center"
+                  key={s.eyebrow}
+                  className="contents"
                   style={{
                     opacity: visible ? 1 : 0,
-                    transform: visible ? "translateY(0)" : "translateY(16px)",
-                    transition: `opacity 600ms ease ${i * 220}ms, transform 600ms ease ${i * 220}ms`,
+                    transform: visible ? "translateY(0)" : "translateY(12px)",
+                    transition: `opacity 500ms ease ${i * 180}ms, transform 500ms ease ${i * 180}ms`,
                   }}
                 >
-                  <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-gold text-navy shadow-glow ring-4 ring-navy">
-                    <Icon size={26} strokeWidth={2.5} />
-                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-navy text-[11px] font-black text-gold ring-2 ring-gold">
+                  <div
+                    className={
+                      isReward
+                        ? "group relative flex items-start gap-4 rounded-2xl border border-gold/40 bg-gradient-to-br from-gold/20 to-transparent p-5"
+                        : "group relative flex items-start gap-4 rounded-2xl border border-white/5 bg-white/5 p-4 transition-colors hover:bg-white/10"
+                    }
+                  >
+                    <div
+                      className={
+                        isReward || i === 0
+                          ? "flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gold text-navy text-lg font-black shadow-lg shadow-gold/20"
+                          : "flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white text-navy text-lg font-black"
+                      }
+                    >
                       {i + 1}
-                    </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span
+                        className={
+                          isReward
+                            ? "text-xs font-bold uppercase tracking-tight text-gold"
+                            : "text-xs font-bold uppercase tracking-tight text-primary-foreground/50"
+                        }
+                      >
+                        {s.eyebrow}
+                      </span>
+                      <p
+                        className={
+                          isReward
+                            ? "mt-0.5 text-lg font-bold text-primary-foreground"
+                            : "mt-0.5 text-base text-primary-foreground/90"
+                        }
+                      >
+                        {s.title}
+                      </p>
+                    </div>
                   </div>
-                  <div className="mt-4 text-base font-bold">{s.title}</div>
-                  <p className="mt-1 max-w-[220px] text-sm text-primary-foreground/70">
-                    {s.desc}
-                  </p>
+                  {i < referralSteps.length - 1 && (
+                    <div
+                      aria-hidden
+                      className={
+                        i === 0
+                          ? "ml-9 h-4 w-[2px] bg-gradient-to-b from-gold to-transparent"
+                          : "ml-9 h-4 w-[2px] bg-gradient-to-b from-white/30 to-transparent"
+                      }
+                    />
+                  )}
                 </li>
               );
             })}
           </ol>
+
+          {/* CTA */}
+          <Link
+            to="/contact"
+            className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-gold px-6 py-4 text-sm font-extrabold uppercase tracking-wide text-navy shadow-[0_10px_20px_-5px_rgba(197,160,89,0.4)] transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+          >
+            Get my referral link
+            <ArrowRight size={18} strokeWidth={2.5} />
+          </Link>
+
+          <p className="mt-4 text-center text-[10px] uppercase tracking-widest text-primary-foreground/40">
+            Terms & conditions apply
+          </p>
         </div>
       </div>
     </section>
