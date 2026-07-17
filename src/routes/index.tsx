@@ -11,9 +11,6 @@ import {
   Rocket,
   ShieldCheck,
   Users,
-  Share2,
-  CalendarCheck,
-  PercentCircle,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
