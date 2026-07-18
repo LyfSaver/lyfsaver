@@ -40,7 +40,13 @@ export function FloatingChat() {
         className="flex items-center gap-2 rounded-full bg-navy py-2 pl-2 pr-4 text-primary-foreground shadow-glow transition-transform hover:scale-105"
         aria-label="Open help chat"
       >
-        <img src={mascotImg} alt="Mascot" width={36} height={36} className="h-9 w-9 animate-float" />
+        <img
+          src={mascotImg}
+          alt="Mascot"
+          width={36}
+          height={36}
+          className="h-9 w-9 animate-float"
+        />
         <span className="text-sm font-semibold">Ask the bot</span>
       </button>
     </div>

@@ -24,7 +24,11 @@ export const Route = createFileRoute("/")({
           "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
       },
       { property: "og:title", content: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
-      { property: "og:description", content: "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included." },
+      {
+        property: "og:description",
+        content:
+          "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
+      },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -44,12 +48,11 @@ function Home() {
               <BadgePercent size={14} /> We beat any quote — guaranteed
             </span>
             <h1 className="mt-4 text-4xl font-black leading-[1.05] md:text-6xl">
-              Your Final Year Project,{" "}
-              <span className="text-gold">Done Right — For Less.</span>
+              Your Final Year Project, <span className="text-gold">Done Right — For Less.</span>
             </h1>
             <p className="mt-4 max-w-lg text-base text-primary-foreground/80 md:text-lg">
-              CSE, ISE, AIML, Data Science, CSBS & Electronics. Full source code, project report, PPT
-              and viva prep — always cheaper than the quote you already have.
+              CSE, ISE, AIML, Data Science, CSBS & Electronics. Full source code, project report,
+              PPT and viva prep — always cheaper than the quote you already have.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
@@ -66,9 +69,15 @@ function Home() {
               </Link>
             </div>
             <div className="mt-8 flex flex-wrap gap-6 text-sm text-primary-foreground/70">
-              <div className="flex items-center gap-2"><ShieldCheck size={16} className="text-gold" /> Report + PPT included</div>
-              <div className="flex items-center gap-2"><Users size={16} className="text-gold" /> 500+ students helped</div>
-              <div className="flex items-center gap-2"><Rocket size={16} className="text-gold" /> Weekly updates</div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={16} className="text-gold" /> Report + PPT included
+              </div>
+              <div className="flex items-center gap-2">
+                <Users size={16} className="text-gold" /> 500+ students helped
+              </div>
+              <div className="flex items-center gap-2">
+                <Rocket size={16} className="text-gold" /> Weekly updates
+              </div>
             </div>
           </div>
           <div className="relative flex items-center justify-center">
@@ -88,43 +97,51 @@ function Home() {
       {/* CATEGORIES */}
       <section className="bg-muted/50 py-16">
         <div className="mx-auto max-w-6xl px-4">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-gold">Explore</p>
-            <h2 className="mt-1 text-3xl font-black text-navy md:text-4xl">
-              Final year project ideas for every domain
-            </h2>
-          </div>
-          <Link to="/projects" className="hidden text-sm font-semibold text-navy underline underline-offset-4 md:inline">
-            See all →
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((c) => (
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gold">Explore</p>
+              <h2 className="mt-1 text-3xl font-black text-navy md:text-4xl">
+                Final year project ideas for every domain
+              </h2>
+            </div>
             <Link
-              key={c.key}
-              to="/projects/$category"
-              params={{ category: c.key }}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-gold"
+              to="/projects"
+              className="hidden text-sm font-semibold text-navy underline underline-offset-4 md:inline"
             >
-              <div className="flex items-center justify-between">
-                <span className="rounded-full bg-navy/5 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-navy">
-                  {c.short}
-                </span>
-                <span className="text-gold opacity-0 transition-opacity group-hover:opacity-100">→</span>
-              </div>
-              <h3 className="mt-3 text-lg font-bold text-navy">{c.name}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{c.tagline}</p>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {c.domains.map((d) => (
-                  <span key={d} className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-semibold text-navy/70">
-                    {d}
-                  </span>
-                ))}
-              </div>
+              See all →
             </Link>
-          ))}
-        </div>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.map((c) => (
+              <Link
+                key={c.key}
+                to="/projects/$category"
+                params={{ category: c.key }}
+                className="group rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-gold"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-navy/5 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-navy">
+                    {c.short}
+                  </span>
+                  <span className="text-gold opacity-0 transition-opacity group-hover:opacity-100">
+                    →
+                  </span>
+                </div>
+                <h3 className="mt-3 text-lg font-bold text-navy">{c.name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{c.tagline}</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {c.domains.map((d) => (
+                    <span
+                      key={d}
+                      className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-semibold text-navy/70"
+                    >
+                      {d}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -133,12 +150,15 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid gap-10 md:grid-cols-2 md:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-gold">What's included</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+                What's included
+              </p>
               <h2 className="mt-1 text-3xl font-black text-navy md:text-4xl">
                 Not just cheaper — a complete package.
               </h2>
               <p className="mt-3 text-muted-foreground">
-                Every LYF SAVER project ships with the full stack of deliverables your college & guide expect.
+                Every LYF SAVER project ships with the full stack of deliverables your college &
+                guide expect.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
@@ -163,7 +183,10 @@ function Home() {
                 { icon: MessagesSquare, label: "Viva prep", note: "Q&A sheet" },
                 { icon: ShieldCheck, label: "Support", note: "Till submission" },
               ].map((b) => (
-                <div key={b.label} className="rounded-2xl border border-border bg-card p-5 shadow-card">
+                <div
+                  key={b.label}
+                  className="rounded-2xl border border-border bg-card p-5 shadow-card"
+                >
                   <b.icon className="text-gold" size={22} />
                   <div className="mt-3 text-base font-bold text-navy">{b.label}</div>
                   <div className="text-xs text-muted-foreground">{b.note}</div>
@@ -234,8 +257,7 @@ function ReferralSection() {
               Refer & save
             </span>
             <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">
-              Bring a friend —{" "}
-              <span className="italic font-serif text-gold">both get 8% off.</span>
+              Bring a friend — <span className="italic font-serif text-gold">both get 8% off.</span>
             </h2>
             <p className="mt-3 max-w-md text-sm text-primary-foreground/70">
               Share your referral link. When they book, we instantly discount both of your quotes.

@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -94,10 +95,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@lyfsaver" },
       { property: "og:title", content: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
       { name: "twitter:title", content: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
-      { property: "og:description", content: "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included." },
-      { name: "twitter:description", content: "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/590a49ea-520a-4ac0-87ed-5cbcdc8891ac" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/590a49ea-520a-4ac0-87ed-5cbcdc8891ac" },
+      {
+        property: "og:description",
+        content:
+          "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/590a49ea-520a-4ac0-87ed-5cbcdc8891ac",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/590a49ea-520a-4ac0-87ed-5cbcdc8891ac",
+      },
     ],
     links: [
       {
@@ -159,6 +176,7 @@ function RootComponent() {
         <FloatingChat />
         <Toaster />
       </div>
+      <Analytics />
     </QueryClientProvider>
   );
 }

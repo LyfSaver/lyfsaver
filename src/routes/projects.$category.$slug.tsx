@@ -11,7 +11,9 @@ export const Route = createFileRoute("/projects/$category/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Project not found — LYF SAVER" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Project not found — LYF SAVER" }, { name: "robots", content: "noindex" }],
+      };
     }
     const { project, cat } = loaderData;
     const title = `${project.title} — Final Year Project with Source Code | LYF SAVER`;
@@ -36,7 +38,12 @@ export const Route = createFileRoute("/projects/$category/$slug")({
               { "@type": "ListItem", position: 1, name: "Home", item: "/" },
               { "@type": "ListItem", position: 2, name: "Projects", item: "/projects" },
               { "@type": "ListItem", position: 3, name: cat.short, item: `/projects/${cat.key}` },
-              { "@type": "ListItem", position: 4, name: project.title, item: `/projects/${cat.key}/${project.slug}` },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: project.title,
+                item: `/projects/${cat.key}/${project.slug}`,
+              },
             ],
           }),
         },
@@ -65,7 +72,10 @@ function ProjectDetail() {
 
       <div className="mt-4 flex flex-wrap gap-1.5">
         {project.stack.map((s: string) => (
-          <span key={s} className="rounded-full bg-navy/5 px-2.5 py-1 text-xs font-semibold text-navy">
+          <span
+            key={s}
+            className="rounded-full bg-navy/5 px-2.5 py-1 text-xs font-semibold text-navy"
+          >
             {s}
           </span>
         ))}
@@ -74,15 +84,16 @@ function ProjectDetail() {
       <div className="prose prose-slate mt-8 max-w-none">
         <h2 className="text-xl font-bold text-navy">About this project</h2>
         <p className="text-muted-foreground">
-          {project.title} is a complete final year {cat.short} project designed for engineering students
-          who need a submission-ready build. We handle everything — architecture, coding, testing,
-          documentation and viva prep — using {project.stack.join(", ")}. The scope, features and
-          deliverables can be tailored to your college's rubric and your guide's expectations.
+          {project.title} is a complete final year {cat.short} project designed for engineering
+          students who need a submission-ready build. We handle everything — architecture, coding,
+          testing, documentation and viva prep — using {project.stack.join(", ")}. The scope,
+          features and deliverables can be tailored to your college's rubric and your guide's
+          expectations.
         </p>
         <p className="text-muted-foreground">
           Whether you were quoted ₹8,000 or ₹25,000 elsewhere, we'll build the same scope for less
-          without cutting corners on quality. All source code is clean, commented and handed over with
-          a setup guide so you can run and demo it in front of your panel with confidence.
+          without cutting corners on quality. All source code is clean, commented and handed over
+          with a setup guide so you can run and demo it in front of your panel with confidence.
         </p>
 
         <h2 className="mt-8 text-xl font-bold text-navy">What you get</h2>
@@ -106,10 +117,14 @@ function ProjectDetail() {
       <div className="mt-10 rounded-3xl bg-hero p-8 text-primary-foreground shadow-glow">
         <h2 className="text-2xl font-black">Ready to get this built?</h2>
         <p className="mt-2 text-primary-foreground/80">
-          Send us your existing quote or your college rubric — we'll come back with a lower, exact price.
+          Send us your existing quote or your college rubric — we'll come back with a lower, exact
+          price.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <Link to="/contact" className="rounded-full bg-gold-gradient px-5 py-3 text-sm font-semibold text-navy shadow-glow">
+          <Link
+            to="/contact"
+            className="rounded-full bg-gold-gradient px-5 py-3 text-sm font-semibold text-navy shadow-glow"
+          >
             Get exact quote
           </Link>
           <Link

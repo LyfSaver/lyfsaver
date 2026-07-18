@@ -13,7 +13,10 @@ export const Route = createFileRoute("/custom-project")({
           "Have your own final year project idea? LYF SAVER builds 100% custom projects for CSE, AIML, Data Science & more — at a price lower than any quote you've received.",
       },
       { property: "og:title", content: "Custom Final Year Project Development" },
-      { property: "og:description", content: "Tell us your idea — we'll build it and beat any quote." },
+      {
+        property: "og:description",
+        content: "Tell us your idea — we'll build it and beat any quote.",
+      },
       { property: "og:url", content: "/custom-project" },
     ],
     links: [{ rel: "canonical", href: "/custom-project" }],
@@ -29,10 +32,13 @@ function CustomProject() {
       <div className="grid gap-10 md:grid-cols-2 md:items-center">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-gold">Custom project</p>
-          <h1 className="mt-1 text-4xl font-black text-navy md:text-5xl">Got your own idea? We'll build it.</h1>
+          <h1 className="mt-1 text-4xl font-black text-navy md:text-5xl">
+            Got your own idea? We'll build it.
+          </h1>
           <p className="mt-3 text-muted-foreground">
-            Tell us the domain, rough idea, deadline and budget. We'll come back with a quote — always
-            cheaper than any other quotation you've received, with full report, PPT and viva prep.
+            Tell us the domain, rough idea, deadline and budget. We'll come back with a quote —
+            always cheaper than any other quotation you've received, with full report, PPT and viva
+            prep.
           </p>
           <Mascot size={220} className="mt-6 hidden md:block" />
         </div>
@@ -57,21 +63,16 @@ function CustomProject() {
               _captcha: "false",
             };
             try {
-              const res = await fetch(
-                "https://formsubmit.co/ajax/query.lyfsaver@gmail.com",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                  },
-                  body: JSON.stringify(payload),
+              const res = await fetch("https://formsubmit.co/ajax/query.lyfsaver@gmail.com", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
                 },
-              );
+                body: JSON.stringify(payload),
+              });
               if (!res.ok) throw new Error(`HTTP ${res.status}`);
-              const data = await res
-                .json()
-                .catch(() => ({}) as { success?: string | boolean });
+              const data = await res.json().catch(() => ({}) as { success?: string | boolean });
               if (data && (data.success === "true" || data.success === true)) {
                 setStatus("sent");
                 toast.success("Got it! We'll get back to you within 24 hours.");
@@ -81,8 +82,7 @@ function CustomProject() {
               }
             } catch (err) {
               setStatus("error");
-              const msg =
-                err instanceof Error ? err.message : "Something went wrong";
+              const msg = err instanceof Error ? err.message : "Something went wrong";
               setErrorMsg(msg);
               toast.error(
                 "Couldn't send. Please email query.lyfsaver@gmail.com or DM @lyf.saver on Instagram.",
@@ -107,7 +107,13 @@ function CustomProject() {
             </select>
           </Field>
           <Field label="Your idea (2–3 lines)">
-            <textarea name="idea" required rows={4} className="input" placeholder="A short summary of your project idea" />
+            <textarea
+              name="idea"
+              required
+              rows={4}
+              className="input"
+              placeholder="A short summary of your project idea"
+            />
           </Field>
           <div className="grid grid-cols-2 gap-3">
             <Field label="Deadline">
@@ -138,7 +144,11 @@ function CustomProject() {
             </p>
           )}
           <p className="mt-3 text-center text-xs text-muted-foreground">
-            Prefer to chat? <Link to="/contact" className="font-semibold text-navy underline">Message us</Link>.
+            Prefer to chat?{" "}
+            <Link to="/contact" className="font-semibold text-navy underline">
+              Message us
+            </Link>
+            .
           </p>
         </form>
       </div>
