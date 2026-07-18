@@ -8,10 +8,14 @@ export const Route = createFileRoute("/pricing")({
       { title: "Final Year Project Pricing — We Beat Any Quote | LYF SAVER" },
       {
         name: "description",
-        content: "See what's included in every LYF SAVER final year project package, and use our Beat My Quote calculator to see how much you'll save.",
+        content:
+          "See what's included in every LYF SAVER final year project package, and use our Beat My Quote calculator to see how much you'll save.",
       },
       { property: "og:title", content: "Final Year Project Pricing — LYF SAVER" },
-      { property: "og:description", content: "Every package includes source code, report, PPT & viva prep." },
+      {
+        property: "og:description",
+        content: "Every package includes source code, report, PPT & viva prep.",
+      },
       { property: "og:url", content: "/pricing" },
     ],
     links: [{ rel: "canonical", href: "/pricing" }],
@@ -34,10 +38,12 @@ function Pricing() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-14">
       <p className="text-xs font-semibold uppercase tracking-wider text-gold">Pricing</p>
-      <h1 className="mt-1 text-4xl font-black text-navy md:text-5xl">Affordable final year projects — full support included.</h1>
+      <h1 className="mt-1 text-4xl font-black text-navy md:text-5xl">
+        Affordable final year projects — full support included.
+      </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        We don't do fixed price tags — every project is priced against your quote and scope, and we beat
-        it by 10–20%. Here's exactly what's included in every project, whatever the price.
+        We don't do fixed price tags — every project is priced against your quote and scope, and we
+        beat it by 10–20%. Here's exactly what's included in every project, whatever the price.
       </p>
 
       <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -59,11 +65,17 @@ function Pricing() {
       </div>
 
       <div className="mt-12 rounded-3xl bg-hero p-8 text-primary-foreground shadow-glow">
-        <h2 className="text-2xl font-black">Refer a friend — <span className="text-gold">both save 8%</span></h2>
+        <h2 className="text-2xl font-black">
+          Refer a friend — <span className="text-gold">both save 8%</span>
+        </h2>
         <p className="mt-2 max-w-xl text-primary-foreground/80">
-          Book together with a friend and we discount both projects by 8%. Ask us for your referral code.
+          Book together with a friend and we discount both projects by 8%. Ask us for your referral
+          code.
         </p>
-        <Link to="/contact" className="mt-4 inline-block rounded-full bg-gold-gradient px-6 py-3 text-sm font-semibold text-navy">
+        <Link
+          to="/contact"
+          className="mt-4 inline-block rounded-full bg-gold-gradient px-6 py-3 text-sm font-semibold text-navy"
+        >
           Claim referral discount
         </Link>
       </div>

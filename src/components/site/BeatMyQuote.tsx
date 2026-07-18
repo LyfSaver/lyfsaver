@@ -47,11 +47,14 @@ export function BeatMyQuote() {
               {formatINR(low)} – {formatINR(high)}
             </div>
             <div className="mt-1 text-sm font-semibold text-navy/80">
-              You save up to <span className="text-gold">{formatINR(savings)}</span> — with report, PPT & viva prep included.
+              You save up to <span className="text-gold">{formatINR(savings)}</span> — with report,
+              PPT & viva prep included.
             </div>
           </>
         ) : (
-          <div className="mt-1 text-sm text-muted-foreground">Enter a quote above to see your price.</div>
+          <div className="mt-1 text-sm text-muted-foreground">
+            Enter a quote above to see your price.
+          </div>
         )}
       </div>
 

@@ -11,7 +11,10 @@ export const Route = createFileRoute("/projects/")({
           "Browse 150+ final year project ideas across CSE, AIML, Data Science, MERN, Java, Flutter & Digital Electronics — with source code, report & PPT.",
       },
       { property: "og:title", content: "Final Year Project Ideas — LYF SAVER" },
-      { property: "og:description", content: "150+ project ideas across CSE, AIML, DS, MERN, Java, Flutter & IoT." },
+      {
+        property: "og:description",
+        content: "150+ project ideas across CSE, AIML, DS, MERN, Java, Flutter & IoT.",
+      },
       { property: "og:url", content: "/projects" },
     ],
     links: [{ rel: "canonical", href: "/projects" }],
@@ -29,8 +32,8 @@ function ProjectsIndex() {
         Final year project ideas for every domain
       </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        150+ ideas across CSE, ISE, AIML, Data Science, CSBS and ECE. Pick one — or send us your own —
-        and we'll build it for less than any quote you've received.
+        150+ ideas across CSE, ISE, AIML, Data Science, CSBS and ECE. Pick one — or send us your own
+        — and we'll build it for less than any quote you've received.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-2">
@@ -51,7 +54,9 @@ function ProjectsIndex() {
           <section key={c.key} id={c.key} className="mt-16 scroll-mt-24">
             <div className="flex items-end justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-gold">{c.short}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+                  {c.short}
+                </p>
                 <h2 className="mt-1 text-2xl font-black text-navy md:text-3xl">{c.name}</h2>
                 <p className="mt-1 max-w-xl text-sm text-muted-foreground">{c.tagline}</p>
               </div>
@@ -75,7 +80,10 @@ function ProjectsIndex() {
                   <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{p.description}</p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {p.stack.map((s) => (
-                      <span key={s} className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-navy/70">
+                      <span
+                        key={s}
+                        className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-navy/70"
+                      >
                         {s}
                       </span>
                     ))}

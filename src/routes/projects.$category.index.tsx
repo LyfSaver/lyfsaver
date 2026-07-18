@@ -9,7 +9,9 @@ export const Route = createFileRoute("/projects/$category/")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Category not found — LYF SAVER" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Category not found — LYF SAVER" }, { name: "robots", content: "noindex" }],
+      };
     }
     const { cat } = loaderData;
     return {
@@ -54,7 +56,10 @@ function CategoryPage() {
             <p className="mt-1 line-clamp-3 text-sm text-muted-foreground">{p.description}</p>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {p.stack.map((s) => (
-                <span key={s} className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-navy/70">
+                <span
+                  key={s}
+                  className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold text-navy/70"
+                >
                   {s}
                 </span>
               ))}
@@ -70,10 +75,16 @@ function CategoryPage() {
           We build 100% custom final year projects — send us the idea, we'll beat any quote.
         </p>
         <div className="mt-5 flex flex-wrap justify-center gap-3">
-          <Link to="/custom-project" className="rounded-full bg-navy px-5 py-3 text-sm font-semibold text-primary-foreground">
+          <Link
+            to="/custom-project"
+            className="rounded-full bg-navy px-5 py-3 text-sm font-semibold text-primary-foreground"
+          >
             Build custom project
           </Link>
-          <Link to="/contact" className="rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-navy">
+          <Link
+            to="/contact"
+            className="rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-navy"
+          >
             Beat my quote
           </Link>
         </div>
