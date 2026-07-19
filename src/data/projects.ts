@@ -1,11 +1,5 @@
 export type CategoryKey =
-  | "mern"
-  | "java"
-  | "flutter"
-  | "aiml"
-  | "data-science"
-  | "data-analytics"
-  | "digital-electronics";
+  "mern" | "java" | "flutter" | "aiml" | "data-science" | "data-analytics" | "digital-electronics";
 
 export interface Category {
   key: CategoryKey;
