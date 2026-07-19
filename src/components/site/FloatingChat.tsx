@@ -42,7 +42,7 @@ export function FloatingChat() {
       >
         <img
           src={mascotImg}
-          alt="Mascot"
+          alt="LYF SAVER robot mascot"
           width={36}
           height={36}
           className="h-9 w-9 animate-float"
