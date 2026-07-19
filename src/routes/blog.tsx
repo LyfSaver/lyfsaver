@@ -9,7 +9,7 @@ export const Route = createFileRoute("/blog")({
         content:
           "Free guides, ideas, and templates for final year projects — pricing, domain-wise ideas, report formats, and more.",
       },
-      { property: "og:title", content: "LYF SAVER Blog" },
+      { property: "og:title", content: "LYF SAVER Blog — Final Year Project Guides & Tips" },
       { property: "og:description", content: "Free guides for final year projects." },
       { property: "og:url", content: "/blog" },
     ],

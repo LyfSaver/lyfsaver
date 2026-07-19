@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
         content:
           "Reach out to LYF SAVER via email or Instagram to get a custom quote for your final year project — guaranteed lower than your current quote.",
       },
-      { property: "og:title", content: "Contact LYF SAVER" },
+      { property: "og:title", content: "Contact LYF SAVER — Get Your Project Quote" },
       { property: "og:description", content: "Get your custom final year project quote." },
       { property: "og:url", content: "/contact" },
     ],
