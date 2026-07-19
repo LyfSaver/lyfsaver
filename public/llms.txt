@@ -15,6 +15,6 @@
 
 ## Optional
 
-- [CSE Projects](/projects/cse): Computer Science final year projects.
+- [MERN Projects](/projects/mern): MERN stack final year projects.
 - [AIML Projects](/projects/aiml): AI & Machine Learning final year projects.
 - [Data Science Projects](/projects/data-science): Data Science final year projects.
