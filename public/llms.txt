@@ -1,0 +1,20 @@
+# LYF SAVER
+
+> Final year project maker for engineering students — CSE, AIML, Data Science, Web, Mobile and Digital Electronics. We build submission-ready projects for less than any quote, with source code, report, PPT and viva prep included.
+
+## Pages
+
+- [Home](/): Overview, guarantee and how LYF SAVER works.
+- [Projects](/projects): 150+ final year project ideas across every domain.
+- [Custom Project](/custom-project): Get a 100% custom project built to your rubric.
+- [How It Works](/how-it-works): Our end-to-end delivery process.
+- [Pricing](/pricing): Transparent pricing and the beat-any-quote guarantee.
+- [About](/about): Who we are and why we started LYF SAVER.
+- [Blog](/blog): Guides, tips and project ideas for final year students.
+- [Contact](/contact): Reach us for a quote or a custom build.
+
+## Optional
+
+- [MERN Projects](/projects/mern): MERN stack final year projects.
+- [AIML Projects](/projects/aiml): AI & Machine Learning final year projects.
+- [Data Science Projects](/projects/data-science): Data Science final year projects.

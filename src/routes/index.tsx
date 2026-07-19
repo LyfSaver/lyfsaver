@@ -17,21 +17,9 @@ import { useEffect, useRef, useState } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
-      {
-        name: "description",
-        content:
-          "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
-      },
-      { property: "og:title", content: "LYF SAVER — Final Year Project Maker | Beat Any Quote" },
-      {
-        property: "og:description",
-        content:
-          "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
-      },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://lyfsaver.lovable.app/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://lyfsaver.lovable.app/" }],
   }),
   component: Home,
 });

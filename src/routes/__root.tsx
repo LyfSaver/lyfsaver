@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Get your final year project built by LYF SAVER for less than any quote you've received — CSE, AIML, Data Science, Web & Mobile, Digital Electronics. Full report, PPT & support included.",
+          "Final year projects built for less than any quote — CSE, AIML, Data Science, Web, Mobile & Electronics. Source code, report, PPT & viva prep included.",
       },
       { name: "author", content: "LYF SAVER" },
       { property: "og:site_name", content: "LYF SAVER" },

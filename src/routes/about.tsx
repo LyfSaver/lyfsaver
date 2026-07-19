@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
         content:
           "Meet the team behind LYF SAVER, a final year project development service trusted by engineering students across CSE, AIML, Data Science & more.",
       },
-      { property: "og:title", content: "About LYF SAVER" },
+      { property: "og:title", content: "About LYF SAVER — Final Year Project Experts" },
       {
         property: "og:description",
         content: "A student-run team building final year projects — done right, for less.",
