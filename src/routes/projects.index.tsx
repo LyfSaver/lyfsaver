@@ -4,7 +4,7 @@ import { categories, projects } from "@/data/projects";
 export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
-      { title: "Final Year Project Ideas 2026 — CSE, AIML, Data Science, Web & App | LYF SAVER" },
+      { title: "Final Year Project Ideas 2026 | LYF SAVER" },
       {
         name: "description",
         content:
