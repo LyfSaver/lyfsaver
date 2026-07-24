@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as CustomProjectRouteImport } from './routes/custom-project'
@@ -24,6 +25,11 @@ import { Route as ProjectsCategorySlugRouteImport } from './routes/projects.$cat
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/custom-project': typeof CustomProjectRoute
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/custom-project': typeof CustomProjectRoute
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/custom-project': typeof CustomProjectRoute
   '/how-it-works': typeof HowItWorksRoute
   '/pricing': typeof PricingRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/': typeof ProjectsIndexRoute
   '/projects/$category/$slug': typeof ProjectsCategorySlugRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/custom-project'
     | '/how-it-works'
     | '/pricing'
+    | '/services'
     | '/sitemap.xml'
     | '/projects/'
     | '/projects/$category/$slug'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/custom-project'
     | '/how-it-works'
     | '/pricing'
+    | '/services'
     | '/sitemap.xml'
     | '/projects'
     | '/projects/$category/$slug'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/custom-project'
     | '/how-it-works'
     | '/pricing'
+    | '/services'
     | '/sitemap.xml'
     | '/projects/'
     | '/projects/$category/$slug'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   CustomProjectRoute: typeof CustomProjectRoute
   HowItWorksRoute: typeof HowItWorksRoute
   PricingRoute: typeof PricingRoute
+  ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
   ProjectsCategorySlugRoute: typeof ProjectsCategorySlugRoute
@@ -180,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   CustomProjectRoute: CustomProjectRoute,
   HowItWorksRoute: HowItWorksRoute,
   PricingRoute: PricingRoute,
+  ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
   ProjectsCategorySlugRoute: ProjectsCategorySlugRoute,
