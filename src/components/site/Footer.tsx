@@ -33,6 +33,9 @@ export function Footer() {
               <Link to="/custom-project">Custom projects</Link>
             </li>
             <li>
+              <Link to="/services">Services</Link>
+            </li>
+            <li>
               <Link to="/pricing">Pricing</Link>
             </li>
             <li>
@@ -48,6 +51,12 @@ export function Footer() {
             </li>
             <li>
               <Link to="/blog">Blog & resources</Link>
+            </li>
+            <li>
+              <Link to="/testimonials">Testimonials</Link>
+            </li>
+            <li>
+              <Link to="/faq">FAQ</Link>
             </li>
             <li>
               <Link to="/contact">Contact</Link>

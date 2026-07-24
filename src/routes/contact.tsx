@@ -74,6 +74,7 @@ function Contact() {
             const payload = {
               name: String(fd.get("name") || ""),
               contact: String(fd.get("contact") || ""),
+              category: String(fd.get("category") || ""),
               existing_quote: String(fd.get("existing_quote") || ""),
               message: String(fd.get("message") || ""),
               _subject: "New LYF SAVER quote request",
@@ -125,6 +126,26 @@ function Contact() {
               required
               className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/40"
             />
+          </label>
+          <label className="mt-4 block">
+            <span className="text-xs font-semibold text-navy/70">Enquiry category</span>
+            <select
+              name="category"
+              required
+              defaultValue=""
+              className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-gold focus:ring-2 focus:ring-gold/40"
+            >
+              <option value="" disabled>
+                Select a category
+              </option>
+              <option>Business Enquiry</option>
+              <option>Final Year Projects</option>
+              <option>Website Development</option>
+              <option>Mobile App Development</option>
+              <option>AI / Research Projects</option>
+              <option>Careers / Job Application</option>
+              <option>Other</option>
+            </select>
           </label>
           <label className="mt-4 block">
             <span className="text-xs font-semibold text-navy/70">
