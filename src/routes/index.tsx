@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mascot } from "@/components/site/Mascot";
 import { BeatMyQuote } from "@/components/site/BeatMyQuote";
+import { BusinessWebsiteSection } from "@/components/site/BusinessWebsiteSection";
+import { CTASection } from "@/components/site/CTASection";
+import { services } from "@/data/services";
 import { categories } from "@/data/projects";
 import {
   ArrowRight,
@@ -133,6 +136,48 @@ function Home() {
         </div>
       </section>
 
+      {/* SERVICES PREVIEW */}
+      <section className="bg-background py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-gold">Services</p>
+              <h2 className="mt-1 text-3xl font-black text-navy md:text-4xl">
+                Projects, websites, apps & software — under one roof.
+              </h2>
+            </div>
+            <Link
+              to="/services"
+              className="hidden text-sm font-semibold text-navy underline underline-offset-4 md:inline"
+            >
+              See all services →
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {services.slice(0, 9).map((s) => (
+              <div
+                key={s.slug}
+                className="rounded-2xl border border-border bg-card p-5 shadow-card transition-all hover:-translate-y-1 hover:border-gold"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/15 text-gold">
+                  <s.icon size={20} />
+                </div>
+                <h3 className="mt-4 text-base font-bold text-navy">{s.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{s.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 text-center md:hidden">
+            <Link to="/services" className="text-sm font-semibold text-navy underline underline-offset-4">
+              See all services →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* BUSINESS WEBSITE SECTION */}
+      <BusinessWebsiteSection />
+
       {/* WHAT'S INCLUDED */}
       <section className="bg-background py-16">
         <div className="mx-auto max-w-6xl px-4">
@@ -187,6 +232,17 @@ function Home() {
 
       {/* REFERRAL */}
       <ReferralSection />
+
+      {/* CTA BANNER */}
+      <CTASection
+        eyebrow="Ready to save?"
+        title="Get your project or business website — for less than any quote."
+        description="Share your requirement and we'll come back within a few hours with a lower, exact price."
+        actions={[
+          { label: "Get free quote", to: "/contact" },
+          { label: "See testimonials", to: "/testimonials" as const, variant: "outline" },
+        ]}
+      />
 
       {/* FAQ */}
       <FAQ />
