@@ -240,7 +240,7 @@ function Home() {
         description="Share your requirement and we'll come back within a few hours with a lower, exact price."
         actions={[
           { label: "Get free quote", to: "/contact" },
-          { label: "See testimonials", to: "/testimonials" as const, variant: "outline" },
+          { label: "See testimonials", to: "/testimonials", variant: "outline" },
         ]}
       />
 
