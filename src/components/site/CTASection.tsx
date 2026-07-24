@@ -3,7 +3,18 @@ import { ArrowRight } from "lucide-react";
 
 export type CTAAction = {
   label: string;
-  to?: "/contact" | "/custom-project" | "/services" | "/projects" | "/pricing";
+  to?:
+    | "/contact"
+    | "/custom-project"
+    | "/services"
+    | "/projects"
+    | "/pricing"
+    | "/testimonials"
+    | "/faq"
+    | "/about"
+    | "/blog"
+    | "/how-it-works"
+    | "/";
   href?: string;
   variant?: "primary" | "outline";
 };
