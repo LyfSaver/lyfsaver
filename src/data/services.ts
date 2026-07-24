@@ -1,0 +1,76 @@
+import {
+  GraduationCap,
+  BookOpen,
+  Briefcase,
+  FlaskConical,
+  Cpu,
+  Brain,
+  Layers,
+  Radio,
+  MonitorSmartphone,
+  Smartphone,
+  Apple,
+  Store,
+  ShoppingCart,
+  Building2,
+  UtensilsCrossed,
+  HeartPulse,
+  School,
+  Stethoscope,
+  User,
+  Database,
+  Users,
+  Boxes,
+  Receipt,
+  Wrench,
+  Palette,
+  ShieldCheck,
+  Bot,
+  Rocket,
+  type LucideIcon,
+} from "lucide-react";
+
+export type Service = {
+  slug: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+};
+
+export const services: Service[] = [
+  { slug: "final-year-engineering-projects", title: "Final Year Engineering Projects", description: "End-to-end final year projects for CSE, ISE, ECE, EEE with report, PPT & viva prep.", icon: GraduationCap },
+  { slug: "mca-projects", title: "MCA Projects", description: "Advanced MCA projects covering modern stacks, databases and full documentation.", icon: BookOpen },
+  { slug: "mba-projects", title: "MBA Projects", description: "MBA capstone projects with research, data analysis and industry-ready reports.", icon: Briefcase },
+  { slug: "bca-projects", title: "BCA Projects", description: "BCA final year projects across web, mobile, DBMS and applied domains.", icon: BookOpen },
+  { slug: "bsc-projects", title: "BSc Projects", description: "BSc Computer Science and IT projects with clean code and academic reports.", icon: FlaskConical },
+  { slug: "msc-projects", title: "MSc Projects", description: "MSc research and applied projects — AI, DS, cybersecurity and more.", icon: FlaskConical },
+  { slug: "diploma-projects", title: "Diploma Projects", description: "Practical, low-cost diploma projects with hardware or software focus.", icon: Wrench },
+  { slug: "ieee-projects", title: "IEEE Projects", description: "Latest IEEE-based projects with base paper implementation and results.", icon: FlaskConical },
+  { slug: "research-projects", title: "Research Projects", description: "Publication-ready research projects with novelty, results and paper drafting.", icon: FlaskConical },
+  { slug: "ai-ml-projects", title: "AI & Machine Learning Projects", description: "Custom AI/ML projects — classification, NLP, computer vision, recommendation.", icon: Brain },
+  { slug: "deep-learning-projects", title: "Deep Learning Projects", description: "Deep learning projects using CNN, RNN, Transformers and generative models.", icon: Brain },
+  { slug: "iot-projects", title: "IoT Projects", description: "IoT projects with sensors, MQTT, cloud dashboards and mobile control.", icon: Radio },
+  { slug: "embedded-systems-projects", title: "Embedded Systems Projects", description: "Embedded projects on Arduino, ESP32, Raspberry Pi and microcontrollers.", icon: Cpu },
+  { slug: "web-development", title: "Web Development", description: "Modern, fast, responsive websites and web apps built with production stacks.", icon: MonitorSmartphone },
+  { slug: "mobile-app-development", title: "Mobile App Development", description: "Cross-platform mobile apps with clean UX and scalable backends.", icon: Smartphone },
+  { slug: "flutter-app-development", title: "Flutter App Development", description: "Flutter apps for Android + iOS with a single codebase and native feel.", icon: Smartphone },
+  { slug: "android-development", title: "Android Development", description: "Native Android apps built with Kotlin/Java — Play Store ready.", icon: Smartphone },
+  { slug: "ios-development", title: "iOS Development", description: "Native iOS apps built with Swift — App Store ready.", icon: Apple },
+  { slug: "business-website-development", title: "Business Website Development", description: "Modern business websites optimized for SEO, speed and conversions.", icon: Building2 },
+  { slug: "ecommerce-websites", title: "E-Commerce Websites", description: "Fully featured online stores with payments, inventory and admin panel.", icon: ShoppingCart },
+  { slug: "company-websites", title: "Company Websites", description: "Corporate websites that build trust and rank on Google.", icon: Building2 },
+  { slug: "restaurant-websites", title: "Restaurant Websites", description: "Restaurant sites with menu, reservations and online orders.", icon: UtensilsCrossed },
+  { slug: "hospital-websites", title: "Hospital Websites", description: "Hospital websites with departments, doctors and appointment booking.", icon: HeartPulse },
+  { slug: "school-college-websites", title: "School & College Websites", description: "Institution websites with admissions, notices and student portals.", icon: School },
+  { slug: "clinic-websites", title: "Clinic Websites", description: "Clean, professional clinic websites with online appointments.", icon: Stethoscope },
+  { slug: "portfolio-websites", title: "Portfolio Websites", description: "Personal portfolio websites that showcase your work beautifully.", icon: User },
+  { slug: "erp-software", title: "ERP Software", description: "Custom ERP software to unify operations, HR, finance and inventory.", icon: Database },
+  { slug: "crm-software", title: "CRM Software", description: "CRM software to manage leads, customers, deals and follow-ups.", icon: Users },
+  { slug: "inventory-management-software", title: "Inventory Management Software", description: "Inventory software with stock, purchase, sales and reports.", icon: Boxes },
+  { slug: "billing-software", title: "Billing Software", description: "GST-ready billing software with invoices, payments and reports.", icon: Receipt },
+  { slug: "custom-software-development", title: "Custom Software Development", description: "Bespoke software built around your unique business processes.", icon: Layers },
+  { slug: "ui-ux-design", title: "UI/UX Design", description: "Human-centered UI/UX design with wireframes, prototypes and design systems.", icon: Palette },
+  { slug: "website-maintenance", title: "Website Maintenance", description: "Ongoing website maintenance, security, backups and updates.", icon: ShieldCheck },
+];
+
+export const serviceHighlights = { Bot, Rocket, Store };
